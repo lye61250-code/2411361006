@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Sky 光遇介紹</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+        }
+
+        .home {
+            height: 100vh;
+            background-image: url("sky.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 8px black;
+        }
+
+        .home h1 {
+            font-size: 60px;
+            margin-bottom: 30px;
+        }
+
+        .home button {
+            font-size: 22px;
+            padding: 14px 36px;
+            border: none;
+            border-radius: 40px;
+            background-color: rgba(255,255,255,0.9);
+            cursor: pointer;
+        }
+
+
+        .content {
+            display: none;
+            min-height: 100vh;
+            background-image: url("Sky2.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 50px;
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 20px;
+            max-width: 600px;
+            cursor: pointer;
+        }
+
+        .detail {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background: white;
+            width: 80%;
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .map-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .map-images img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card-img {
+           width: 100%;
+           max-width: 100%;
+           height: auto;
+           border-radius: 15px;
+           margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="home" id="home">
+        <h1>歡迎來到 Sky 王國 </h1>
+        <button onclick="enter()">一起進入光遇世界吧~</button>
+    </div>
+
+
+    <div class="content" id="content">
+        
+        <h2>Sky 光遇介紹</h2>
+
+        <div class="card" onclick="toggleDetail('d1')">
+            玩法
+            <div class="detail" id="d1">
+                <img src="img.jpg" class="card-img">
+                蒐集每個地圖內的燭光，用於跟先祖換取頭髮衣物等物品!也可以用來社交，兌換好友樹。(圖片為衣櫃髮型部分照片)
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleDetail('d2')">
+            季節介紹
+            <div class="detail" id="d2">
+                <img src="season.jpg" class="card-img">
+                季節通常持續約 2-3 個月，每個季節先祖都會帶來獨特的髮型服飾!至今已經過了30個季節囉~~(圖片為所有季節)
+            </div>
+            
+        </div>
+
+        <div class="card" onclick="openMap()">
+            📍 光遇地圖介紹
+        </div>
+    </div>
+<div class="modal" id="mapModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeMap()">✖</span>
+        <h3>地圖</h3>
+
+        <div class="map-images">
+            <div class="img-box">
+                <img src="map1.jpg">
+                <h4>遇境</h4>
+                <p>遊戲大廳！這邊可以通往其他六個地圖，也可以在這邊更換衣服</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map2.jpg">
+                <h4>晨島</h4>
+                <p>這裡是旅程起始地方，我們可以在這邊學會如何飛翔</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map3.jpg">
+                <h4>雲野</h4>
+                <p>像是草原一樣，有很多蝴蝶跟花</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map4.jpg">
+                <h4>雨林</h4>
+                <p>長年下雨，雨聲非常優美</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map5.jpg">
+                <h4>霞谷</h4>
+                <p>這邊有滑雪道，超級好玩！</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map6.jpg">
+                <h4>墓土</h4>
+                <p>暗暗的，裡面有很多隻龍！一不小心就會被撞飛喔～</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map7.jpg">
+                <h4>禁閣</h4>
+                <p>藏書閣的感覺，安安靜靜的！！</p>
+            </div>
+
+            <div class="img-box">
+                <img src="map8.jpg">
+                <h4>暴風眼</h4>
+                <p>獻祭，用翼之光拯救先祖</p>
+            </div>
+        </div> 
+    </div>
+</div>
+    <div class="modal" id="photoModal">
+    <div class="modal-content">
+        <span class="close" onclick="closePhoto()">✖</span>
+        <h3>照片分享</h3>
+
+        <p>這些是我在這個遊戲裡面拍攝到的照片</p>
+
+        <div class="photo-grid">
+            <img src="p1.jpg">
+            <img src="p2.jpg">
+            <img src="p3.jpg">
+            <img src="p4.jpg">
+            <img src="p5.jpg">
+            <img src="p6.jpg">
+            <img src="p7.jpg">
+            <img src="p8.jpg">
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        function enter() {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+
+        function toggleDetail(id) {
+            let box = document.getElementById(id);
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+
+        function openMap() {
+            document.getElementById("mapModal").style.display = "block";
+        }
+
+        function closeMap() {
+            document.getElementById("mapModal").style.display = "none";
+        }
+
+        function openPhoto() {
+            document.getElementById("photoModal").style.display = "block";
+        }
+
+        function closePhoto() {
+            document.getElementById("photoModal").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
