@@ -150,12 +150,14 @@
     <h2>Sky 光遇介紹</h2>
 
     <div class="card" onclick="toggleDetail('d1')">
-         玩法
-        <div class="detail" id="d1">
-            <img src="img.jpg" class="card-img">
-            蒐集每個地圖內的燭光，用於與先祖兌換服裝與髮型，也可以用來與好友互動交流。
-        </div>
-    </div>
+         玩法 
+    <video id="playVideo" class="card-img" controls muted playsinline>
+    <source src="play.mp4" type="video/mp4">
+    </video>
+    <p>
+        蒐集每個地圖內的燭光，用於與先祖兌換服裝與髮型，影片是衣櫃!有分為衣服褲子、面具頸飾、髮型、披風、背飾，只要有收集到就隨時都可以依喜好搭配~
+    </p>
+</div>
 
     <div class="card" onclick="toggleDetail('d2')">
          季節介紹
@@ -180,58 +182,57 @@
         <span class="close" onclick="closeMap()">✖</span>
         <h3>地圖介紹</h3>
 
-        <div class="map-images">
-            <div class="img-box">
-                <img src="map1.jpg">
-                <h4>遇境</h4>
-                <p>遊戲大廳，可通往所有地圖</p>
-            </div>
+<div class="map-images">
+    <div class="img-box" onclick="openVideo('遇境', '0.mp4')">
+        <img src="map1.jpg">
+        <h4>遇境</h4>
+        <p>大廳，可以通往所有的地圖，也可以在這邊換衣服! 中間那個大星盤可以看朋友在不再線上，選擇傳送。或是看看地圖先祖進度(就是影片一開始的部分)</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map2.jpg">
-                <h4>晨島</h4>
-                <p>旅程的起點，學習飛行</p>
-            </div>
+    <div class="img-box" onclick="openVideo('晨島', '1.mp4')">
+        <img src="map2.jpg">
+        <h4>晨島</h4>
+        <p>旅程的起點，在這邊可以學習飛行!!</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map3.jpg">
-                <h4>雲野</h4>
-                <p>像草原一樣遼闊</p>
-            </div>
+    <div class="img-box" onclick="openVideo('雲野', '2.mp4')">
+        <img src="map3.jpg">
+        <h4>雲野</h4>
+        <p>像草原一樣，有很多花花草草</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map4.jpg">
-                <h4>雨林</h4>
-                <p>長年下雨的神秘地區</p>
-            </div>
+    <div class="img-box" onclick="openVideo('雨林', '3.mp4')">
+        <img src="map4.jpg">
+        <h4>雨林</h4>
+        <p>基本上都在下雨，聽著雨聲會感到非常療育</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map5.jpg">
-                <h4>霞谷</h4>
-                <p>刺激的滑行賽道</p>
-            </div>
+    <div class="img-box" onclick="openVideo('霞谷', '4.mp4')">
+        <img src="map5.jpg">
+        <h4>霞谷</h4>
+        <p>滑雪的好地方!!影片中的地點是叫做圓夢村，有很大的溜冰場~</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map6.jpg">
-                <h4>墓土</h4>
-                <p>充滿危險的黑暗地圖</p>
-            </div>
+    <div class="img-box" onclick="openVideo('墓土', '5.mp4')">
+        <img src="map6.jpg">
+        <h4>墓土</h4>
+        <p>超級可怕的地圖!!我剛開始玩的時候被這裡嚇到不行，被黑色小龍撞到會把翅膀都掉光光歐!要遠離!!!</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map7.jpg">
-                <h4>禁閣</h4>
-                <p>安靜神聖的藏書空間</p>
-            </div>
+    <div class="img-box" onclick="openVideo('禁閣', '6.mp4')">
+        <img src="map7.jpg">
+        <h4>禁閣</h4>
+        <p>是一個像是圖書館一樣的地方，中間腳踩的地方是電梯，可以往上一層前進!</p>
+    </div>
 
-            <div class="img-box">
-                <img src="map8.jpg">
-                <h4>暴風眼</h4>
-                <p>獻祭與重生之地</p>
-            </div>
-        </div>
+    <div class="img-box" onclick="openVideo('暴風眼', '7.mp4')">
+        <img src="map8.jpg">
+        <h4>暴風眼</h4>
+        <p>獻祭與重生之地，不要看圖片這麼漂亮，其實前面要先經歷過重重難關喔!</p>
     </div>
 </div>
-
+</div>
+</div>
 
 <div class="modal" id="photoModal">
     <div class="modal-content">
@@ -250,6 +251,17 @@
             <img src="p7.jpg">
             <img src="p8.jpg">
         </div>
+    </div>
+</div>
+
+<div class="modal" id="videoModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeVideo()">✖</span>
+        <h3 id="videoTitle">地圖影片</h3>
+
+        <video id="mapVideo" controls width="100%">
+            <source src="" type="video/mp4">
+        </video>
     </div>
 </div>
 
@@ -278,6 +290,24 @@
 
     function closePhoto() {
         document.getElementById("photoModal").style.display = "none";
+    }
+
+    function openVideo(title, videoSrc) {
+    document.getElementById("videoTitle").innerText = title;
+
+    const video = document.getElementById("mapVideo");
+    video.src = videoSrc;
+
+    document.getElementById("videoModal").style.display = "block";
+    video.currentTime = 0;
+    video.play();
+}
+
+    function closeVideo() {
+    const video = document.getElementById("mapVideo");
+    video.pause();
+    video.src = "";
+    document.getElementById("videoModal").style.display = "none";
     }
 </script>
 
